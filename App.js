@@ -1,15 +1,6 @@
-/* eslint-disable prettier/prettier */
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
-
 import React from 'react';
 import {Component} from 'react';
-import {View, Text} from 'react-native';
+import {View, Text, StyleSheet} from 'react-native';
 
 import {FlatList} from 'react-native';
 
@@ -19,7 +10,6 @@ export default class App extends Component {
     this.state = {
       mid: 0,
       data: [],
-      // lengthOfData:''
     };
   }
 
@@ -62,14 +52,31 @@ export default class App extends Component {
 
   render() {
     return (
-      <View>
+      <View style={styles.container}>
+        <Text>Hello 1</Text>
         <FlatList
-          data={this.state.data}
-          renderItem={({item}) => {
-            return <Text style={{color: 'white'}}>{item.qty} </Text>;
+          data={this.state.data[0]}
+          renderItem={data => <Text>${data.type}</Text>}
+          onEndReached={() => {
+            this.setState({mid: this.data.length});
           }}
+          style={styles.FlatList}
         />
+        <Text>Hello 2</Text>
       </View>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  text: {
+    color: 'black',
+    backgroundColor: 'white',
+  },
+  FlatList: {
+    backgroundColor: 'yellow',
+  },
+});
