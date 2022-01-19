@@ -55,7 +55,7 @@ export default class App extends Component {
       <View style={styles.container}>
         <Text>Hello 1</Text>
         <FlatList
-          data={this.state.data[0]}
+          data={this.state.data}
           renderItem={data => <Text>${data.type}</Text>}
           onEndReached={() => {
             this.setState({mid: this.data.length});
